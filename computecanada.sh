@@ -11,7 +11,7 @@ virtualenv --no-download $SLURM_TMPDIR/env
 source $SLURM_TMPDIR/env/bin/activate
 pip install -r /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/requirements.txt
 cd $SLURM_TMPDIR
-#tar -xf /home/ansoba/projects/def-gabilode/ansoba/BAIR.tar.gz
+tar -xvzf /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/training/clay/data.tar.gz
 export NCCL_BLOCKING_WAIT=1 # Set this environment variable if you wish to use the NCCL backend for inter-GPU communication.
 echo "r$SLURM_NODEID master: $MASTER_ADDR"
 echo "r$SLURM_NODEID Launching python script"
