@@ -6,10 +6,11 @@
 #SBATCH --mem=96G
 #SBATCH --time=0-24:00
 #SBATCH --account=def-gabilode
-module load python/3.8 # Using Default Python version - Make sure to choose a version that suits your application
-virtualenv --no-download $SLURM_TMPDIR/env
-source $SLURM_TMPDIR/env/bin/activate
-pip install -r /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/requirements.txt
+module load python/3.8.2 # Using Default Python version - Make sure to choose a version that suits your application
+#virtualenv --no-download $SLURM_TMPDIR/env
+#source $SLURM_TMPDIR/env/bin/activate
+source /home/ansoba/projects/def-gabilode/ansoba/control/bin/activate
+#pip install -r /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/requirements.txt
 cd $SLURM_TMPDIR
 tar -xvzf /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/training/clay/data.tar.gz
 export NCCL_BLOCKING_WAIT=1 # Set this environment variable if you wish to use the NCCL backend for inter-GPU communication.
