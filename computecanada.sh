@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:v100l:4
+#SBATCH --ntasks-per-node=32
+#SBATCH --exclusive
+#SBATCH --mem=96G
+#SBATCH --time=0-24:00
+#SBATCH --account=def-gabilode
+module load python/3.8 # Using Default Python version - Make sure to choose a version that suits your application
+virtualenv --no-download $SLURM_TMPDIR/env
+source $SLURM_TMPDIR/env/bin/activate
+pip install -r /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/requirements.txt
+cd $SLURM_TMPDIR
+#tar -xf /home/ansoba/projects/def-gabilode/ansoba/BAIR.tar.gz
+export NCCL_BLOCKING_WAIT=1 # Set this environment variable if you wish to use the NCCL backend for inter-GPU communication.
+echo "r$SLURM_NODEID master: $MASTER_ADDR"
+echo "r$SLURM_NODEID Launching python script"
+echo "$SLURM_NTASKS"
+# tensorboard --logdir=/home/xiyex/scratch/xiyex/VPTR_ckpts/tensorboard --host 0.0.0.0 --load_fast false &
+python /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/tool_add_control_sd21.py /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/models/v2-1_512-ema-pruned.ckpt /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/models/control_sd21_ini.ckpt
+python /home/ansoba/projects/def-gabilode/ansoba/GUI-ControlNet/tutorial_train_sd21.py
