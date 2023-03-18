@@ -1,6 +1,6 @@
 torch==1.12.1
 torchvision==0.13.1
-numpy
+numpy==1.23.1
 gradio
 albumentations
 opencv-contrib-python
@@ -21,3 +21,6 @@ addict
 yapf
 prettytable
 basicsr
+streamlit
+streamlit-drawable-canvas
+safetensors

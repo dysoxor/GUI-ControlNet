@@ -6,7 +6,7 @@
 #SBATCH --mem=96G
 #SBATCH --time=0-24:00
 #SBATCH --account=def-gabilode
-module load python/3.8.2 # Using Default Python version - Make sure to choose a version that suits your application
+module load python/3.9 # Using Default Python version - Make sure to choose a version that suits your application
 #virtualenv --no-download $SLURM_TMPDIR/env
 #source $SLURM_TMPDIR/env/bin/activate
 source /home/ansoba/projects/def-gabilode/ansoba/control/bin/activate
