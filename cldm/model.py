@@ -12,6 +12,7 @@ def get_state_dict(d):
 def load_state_dict(ckpt_path, location='cpu'):
     _, extension = os.path.splitext(ckpt_path)
     if extension.lower() == ".safetensors":
+        print('nope')
         import safetensors.torch
         state_dict = safetensors.torch.load_file(ckpt_path, device=location)
     else:
