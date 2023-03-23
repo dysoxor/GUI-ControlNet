@@ -22,5 +22,5 @@ timm
 addict
 yapf
 prettytable
-safetensors==0.2.7
+safetensors
 basicsr
