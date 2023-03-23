@@ -19,5 +19,4 @@ timm
 addict
 yapf
 prettytable
-safetensors
 basicsr
